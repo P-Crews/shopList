@@ -35,15 +35,10 @@ class MyTableViewController: UIViewController, UITableViewDataSource, UITableVie
         if let index = listArray.index(of: items){
             listArray.remove(at: index)
         }
-        for i in 0...listArray.count - 1{
-            bgt = bgt + listArray[i].price
-            
-        }
-        items.total = bgt
+        getBalance()
+        getTotal()
         
         myTable.reloadData()
-        total.text = ("\(Double(bgt))")
-        budget.text = ("\(Double(items.budget))")
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     
@@ -84,10 +79,13 @@ class MyTableViewController: UIViewController, UITableViewDataSource, UITableVie
     @IBAction func updatePressed(_ sender: Any) {
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let lister = List(context: context)
-        lister.budget = Double(budget.text!)!
-        print(lister.budget)
-        balance.text = String("\( Double(lister.budget) - Double(lister.total))")
+        let items = List(context: context)
+        
+        items.budget = Double("\(budget.text!)")!
+        
+        getTotal()
+        
+        listArray.append(items)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         self.view.endEditing(true)
         
@@ -169,18 +167,19 @@ class MyTableViewController: UIViewController, UITableViewDataSource, UITableVie
             list = grocery
             
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        context.delete(grocery)
-        removeListItem()
-        getTotal()
-        myTable.reloadData()
-        
-        
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+            context.delete(grocery)
+            removeListItem()
+            getTotal()
+            myTable.reloadData()
+            
+            
+            (UIApplication.shared.delegate as! AppDelegate).saveContext()
         }
     }
     
     func removeListItem(){
-        if let index = listArray.index(of: list!){            listArray.remove(at: index)
+        if let index = listArray.index(of: list!){
+            listArray.remove(at: index)
         }
     }
     func getTotal(){

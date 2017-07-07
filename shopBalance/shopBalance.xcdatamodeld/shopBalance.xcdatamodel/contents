@@ -11,6 +11,6 @@
         <attribute name="total" optional="YES" attributeType="Double" usesScalarValueType="YES" syncable="YES"/>
     </entity>
     <elements>
-        <element name="List" positionX="-63" positionY="-18" width="128" height="163"/>
+        <element name="List" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>
