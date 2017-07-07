@@ -29,39 +29,36 @@ class MyTableViewController: UIViewController, UITableViewDataSource, UITableVie
    
     override func viewWillAppear(_ animated: Bool) {
         
+        itemInfo()
+        
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let items = List(context: context)
+       
+        items.balance = Double(items.budget) - Double(items.total)
         
-        if items.new == true{
-            
-            context.delete(items)
-            items.new = false
+        
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
+        
+        
+        if items.balance == 0{
+            balance.text = String("\(Double(0.00))")
         }else{
-            
+            balance.text = ("\(Double(items.balance))")
         }
-        itemInfo()
-        myTable.reloadData()
         
+        total.text = ("\(Double(items.total))")
         
         
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let items = List(context: context)
-        print(items)
-        items.total = (Double(Int32(Double(items.price) * Double(items.quantity))))
-        items.balance = Double(items.budget) - Double(items.total)
-        (UIApplication.shared.delegate as! AppDelegate).saveContext()
-        if items.balance == 0{
-            balance.text = String("$ 0.00")
-        }else{
-        balance.text = ("$ \(Double(items.balance))")
-        }
-        total.text = ("$ \(Double(items.total))")
-        budget.text = ("$ \(Double(items.budget))")
-        print(listArray.count)
+        
+        total.text = ("\(Double(items.total))")
+        budget.text = ("\(Double(items.budget))")
     }
     
     
@@ -71,9 +68,6 @@ class MyTableViewController: UIViewController, UITableViewDataSource, UITableVie
             listArray = try context.fetch(List.fetchRequest()) as! [List]
         }catch{
             
-        }
-        for i in 0...listArray.count - 1{
-            print(String("\(listArray[i].name!)")!)
         }
     }
     
@@ -85,7 +79,9 @@ class MyTableViewController: UIViewController, UITableViewDataSource, UITableVie
         lister.budget = Double(budget.text!)!
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         print(lister.budget)
-        balance.text = String("$ \( Double(lister.budget))")
+        balance.text = String("\( Double(lister.budget) - Double(lister.total))")
+        
+        self.view.endEditing(true)
         
     }
     
@@ -95,41 +91,35 @@ class MyTableViewController: UIViewController, UITableViewDataSource, UITableVie
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let items = List(context: context)
-        
-        if items.budget < Double(itemPrice.text!)!{
-            let alert = UIAlertController(title: "Money's Low", message: "You are going over budget.", preferredStyle: .alert)
-            let ok = UIAlertAction(title: "OK", style: .default, handler: { (alert) in
-               
-            })
-            alert.addAction(ok)
-        }else{
+        print(total.text!)
         items.budget = Double("\(budget.text!)")!
         items.id = 3
         items.name = itemName.text!
         items.quantity =  Int32(itemQt.text!)!
         items.price = Double(itemPrice.text!)!
         let cost = Double(itemPrice.text!)! * Double(itemQt.text!)!
-        items.total = Double(total.text!)! + Double(cost)
+        items.total = Double(cost)
         print(items)
         total.text = String(Double(total.text!)! + Double(cost))
         balance.text = String("$ \(Double(budget.text!)! - Double(total.text!)!)")
         
         listArray.append(items)
         
-        
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         myTable.reloadData()
         
-    }
+    
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
         let cell = UITableViewCell()
         let items = listArray[indexPath.row]
-        if items.id == 0 {
-            cell.textLabel?.text = "😕 No groceries added 😕"
         
+        //FIND OUT WHY THE FUCK LIST ARRAY IS GENERATING SHIT
+        
+        if items.total == 0.0{
+            cell.textLabel?.text = String("\(listArray[indexPath.row].name)")
         }
         else{
             cell.textLabel?.text = String("\(indexPath.row + 1).) | \(items.quantity) |\(items.name!) | \(items.price)" )
@@ -140,7 +130,13 @@ class MyTableViewController: UIViewController, UITableViewDataSource, UITableVie
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let items = List(context: context)
+        
         return listArray.count
+        
     }
     
     
@@ -156,8 +152,10 @@ class MyTableViewController: UIViewController, UITableViewDataSource, UITableVie
         
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
         context.delete(grocery)
         tableView.reloadData()
+        
         
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
