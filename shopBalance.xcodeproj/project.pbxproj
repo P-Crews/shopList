@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0F186DE41F1082F3009DD461 /* ReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F186DE31F1082F3009DD461 /* ReceiptViewController.swift */; };
 		0F2648C71F0EF0270098E272 /* supermarket.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F2648C61F0EF0270098E272 /* supermarket.gif */; };
 		0F2648C91F0EF0320098E272 /* image.gif in Resources */ = {isa = PBXBuildFile; fileRef = 0F2648C81F0EF0320098E272 /* image.gif */; };
 		0F2B51001F0D1E1C006FE3D7 /* MyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0F2B50FF1F0D1E1C006FE3D7 /* MyTableViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0F186DE31F1082F3009DD461 /* ReceiptViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiptViewController.swift; sourceTree = "<group>"; };
 		0F2648C61F0EF0270098E272 /* supermarket.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = supermarket.gif; path = ../../../../Downloads/supermarket.gif; sourceTree = "<group>"; };
 		0F2648C81F0EF0320098E272 /* image.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; name = image.gif; path = ../../../../Downloads/image.gif; sourceTree = "<group>"; };
 		0F2B50FF1F0D1E1C006FE3D7 /* MyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTableViewController.swift; path = ../MyTableViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 				0FC66AC31F0C0BD40087BCB5 /* AppDelegate.swift */,
 				0FC66AC51F0C0BD40087BCB5 /* ViewController.swift */,
 				0FC66AC71F0C0BD40087BCB5 /* Main.storyboard */,
+				0F186DE31F1082F3009DD461 /* ReceiptViewController.swift */,
 				0F2B50FF1F0D1E1C006FE3D7 /* MyTableViewController.swift */,
 				0F2B51011F0D1F7F006FE3D7 /* MyTableViewCell.swift */,
 				0F2B51031F0D274A006FE3D7 /* shoppingItem.swift */,
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0F2B51081F0D5C5A006FE3D7 /* ItemViewController.swift in Sources */,
+				0F186DE41F1082F3009DD461 /* ReceiptViewController.swift in Sources */,
 				0F2B51041F0D274A006FE3D7 /* shoppingItem.swift in Sources */,
 				0FC66AC61F0C0BD40087BCB5 /* ViewController.swift in Sources */,
 				0FC66AC41F0C0BD40087BCB5 /* AppDelegate.swift in Sources */,
