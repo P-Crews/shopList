@@ -29,7 +29,7 @@
 		0F2B50FF1F0D1E1C006FE3D7 /* MyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTableViewController.swift; path = ../MyTableViewController.swift; sourceTree = "<group>"; };
 		0F2B51011F0D1F7F006FE3D7 /* MyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTableViewCell.swift; sourceTree = "<group>"; };
 		0F2B51031F0D274A006FE3D7 /* shoppingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shoppingItem.swift; sourceTree = "<group>"; };
-		0F2B51071F0D5C5A006FE3D7 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
+		0F2B51071F0D5C5A006FE3D7 /* ItemViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ItemViewController.swift; path = ../ItemViewController.swift; sourceTree = "<group>"; };
 		0FC66AC01F0C0BD40087BCB5 /* shopBalance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = shopBalance.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0FC66AC31F0C0BD40087BCB5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0FC66AC51F0C0BD40087BCB5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +54,6 @@
 		0FC66AB71F0C0BD40087BCB5 = {
 			isa = PBXGroup;
 			children = (
-				0F2B51071F0D5C5A006FE3D7 /* ItemViewController.swift */,
 				0FC66AC21F0C0BD40087BCB5 /* shopBalance */,
 				0FC66AC11F0C0BD40087BCB5 /* Products */,
 			);
@@ -71,11 +70,12 @@
 		0FC66AC21F0C0BD40087BCB5 /* shopBalance */ = {
 			isa = PBXGroup;
 			children = (
+				0FC66AC71F0C0BD40087BCB5 /* Main.storyboard */,
+				0F2B51071F0D5C5A006FE3D7 /* ItemViewController.swift */,
 				0F2648C61F0EF0270098E272 /* supermarket.gif */,
 				0F2648C81F0EF0320098E272 /* image.gif */,
 				0FC66AC31F0C0BD40087BCB5 /* AppDelegate.swift */,
 				0FC66AC51F0C0BD40087BCB5 /* ViewController.swift */,
-				0FC66AC71F0C0BD40087BCB5 /* Main.storyboard */,
 				0F186DE31F1082F3009DD461 /* ReceiptViewController.swift */,
 				0F2B50FF1F0D1E1C006FE3D7 /* MyTableViewController.swift */,
 				0F2B51011F0D1F7F006FE3D7 /* MyTableViewCell.swift */,

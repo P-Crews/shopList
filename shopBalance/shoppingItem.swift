@@ -9,9 +9,7 @@
 import UIKit
 
 
-class listItem{
-    var id = 0
+class groceryList{
     var qt = 0
     var name = ""
-    var price = ""
 }

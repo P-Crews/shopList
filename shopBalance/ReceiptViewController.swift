@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class ReceiptViewController: UIViewController {
+class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var list : List? = nil
     var listArray : [List] = []
@@ -94,7 +94,15 @@ class ReceiptViewController: UIViewController {
     
     
     @IBAction func addTapped(_ sender: Any) {
-        
+        if itemPrice.text == "" || itemQt.text == "" || itemName.text == ""{
+            print("NO")
+            let alert = UIAlertController(title: "🛑❗️❗️❗️", message: "Please fill in all fields❗️", preferredStyle: .alert)
+            let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) in
+            
+            })
+            alert.addAction(ok)
+            self.present(alert, animated: true)
+        }else{
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let items = List(context: context)
         items.budget = Double("\(budget.text!)")!
@@ -113,7 +121,11 @@ class ReceiptViewController: UIViewController {
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
         myTable.reloadData()
         
-        
+        self.view.endEditing(true)
+        itemQt.text = nil
+        itemName.text = nil
+        itemPrice.text = nil
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
