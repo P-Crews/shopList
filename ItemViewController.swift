@@ -39,6 +39,7 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
+        let cell = UITableViewCell()
         if myListArray.count == 0{
             
         }else{
@@ -47,11 +48,16 @@ class ItemViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
             
-            grocery.done = true
             
             (UIApplication.shared.delegate as! AppDelegate).saveContext()
-            //            context.delete(grocery)
-            //            removeListItem()
+            
+            if grocery.done == true{
+            context.delete(grocery)
+            removeListItem()
+            }else{
+                grocery.done = true
+                
+            }
             myTable.reloadData()
             
         }
