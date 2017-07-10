@@ -11,4 +11,11 @@ import UIKit
 
 class MyTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var itemId: UILabel!
+    @IBOutlet weak var itemQt: UILabel!
+    @IBOutlet weak var itemName: UILabel!
+    @IBOutlet weak var itemPrice: UILabel!
+    
+    
+    
   }

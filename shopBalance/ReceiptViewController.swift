@@ -130,24 +130,30 @@ class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
         if listArray.count == 0{
+            let cell = UITableViewCell()
             cell.textLabel?.text = "🤔 Nothing here yet 🤔"
             cell.textLabel?.textAlignment = .center
+            return cell
         }else{
             
             let items = listArray[indexPath.row]
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell", for: indexPath) as! MyTableViewCell
             if items.name != nil{
-                cell.textLabel?.text = String("\(indexPath.row + 1).) | \(items.quantity) |\(items.name!) | \(items.price)" )
+                cell.itemId?.text = String("\(indexPath.row + 1). ")
+                cell.itemName?.text = items.name
+                cell.itemQt?.text = String(items.quantity)
+                cell.itemPrice?.text = String("$ \(items.price)")
+//                
+//                cell.textLabel?.text = String("\(indexPath.row + 1).) | \(items.quantity) |\(items.name!) | \(items.price)" )
             }else{
                 if let index = listArray.index(of: items){
                     listArray.remove(at: index)
                 }
                 myTable.reloadData()
             }
+            return cell
         }
-        return cell
     }
     
     
