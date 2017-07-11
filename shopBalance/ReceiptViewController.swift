@@ -21,10 +21,16 @@ class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var balance: UILabel!
     @IBOutlet weak var ttl: UILabel!
     @IBOutlet weak var budget: UITextField!
-    
     @IBOutlet weak var updateButton: UIButton!
     var bgt:Double = 0.00
     var all:Double = 0.00
+    
+    
+    @IBAction func budgetClicked(_ sender: Any) {
+        updateButton.isEnabled = true
+        
+    }
+
     
     override func viewWillAppear(_ animated: Bool) {
         itemInfo()
@@ -44,7 +50,7 @@ class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.myTable.sectionHeaderHeight = 40
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let items = List(context: context)
         
@@ -84,6 +90,7 @@ class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewD
         items.budget = Double("\(budget.text!)")!
         
         getTotal()
+        updateButton.isEnabled = false
         
         listArray.append(items)
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
@@ -128,12 +135,30 @@ class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
     }
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = tableView.dequeueReusableCell(withIdentifier: "headCells") as! MyTableViewCell
+        
+        
+        header.id.text = "ID"
+        header.qtLabel.text = "Quantity"
+        header.nameLabel.text = "Item"
+        header.priceLabel.text = "Price"
+        return header
+    }
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+        
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if listArray.count == 0{
             let cell = UITableViewCell()
             cell.textLabel?.text = "🤔 Nothing here yet 🤔"
             cell.textLabel?.textAlignment = .center
+            cell.backgroundColor = UIColor.clear
+            
             return cell
         }else{
             
@@ -144,8 +169,6 @@ class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewD
                 cell.itemName?.text = items.name
                 cell.itemQt?.text = String(items.quantity)
                 cell.itemPrice?.text = String("$ \(items.price)")
-//                
-//                cell.textLabel?.text = String("\(indexPath.row + 1).) | \(items.quantity) |\(items.name!) | \(items.price)" )
             }else{
                 if let index = listArray.index(of: items){
                     listArray.remove(at: index)
@@ -171,7 +194,7 @@ class ReceiptViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 50
+        return 40
     }
     
     
