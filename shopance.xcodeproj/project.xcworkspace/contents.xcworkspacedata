@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:shopBalance.xcodeproj">
+      location = "self:/Users/Dad/Documents/Developer/shopBalance/shopance.xcodeproj">
    </FileRef>
 </Workspace>

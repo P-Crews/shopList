@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0FC66ABF1F0C0BD40087BCB5"
-               BuildableName = "shopBalance.app"
-               BlueprintName = "shopBalance"
-               ReferencedContainer = "container:shopBalance.xcodeproj">
+               BuildableName = "shopance.app"
+               BlueprintName = "shopance"
+               ReferencedContainer = "container:shopance.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0FC66ABF1F0C0BD40087BCB5"
-            BuildableName = "shopBalance.app"
-            BlueprintName = "shopBalance"
-            ReferencedContainer = "container:shopBalance.xcodeproj">
+            BuildableName = "shopance.app"
+            BlueprintName = "shopance"
+            ReferencedContainer = "container:shopance.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -56,9 +56,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0FC66ABF1F0C0BD40087BCB5"
-            BuildableName = "shopBalance.app"
-            BlueprintName = "shopBalance"
-            ReferencedContainer = "container:shopBalance.xcodeproj">
+            BuildableName = "shopance.app"
+            BlueprintName = "shopance"
+            ReferencedContainer = "container:shopance.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -75,9 +75,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0FC66ABF1F0C0BD40087BCB5"
-            BuildableName = "shopBalance.app"
-            BlueprintName = "shopBalance"
-            ReferencedContainer = "container:shopBalance.xcodeproj">
+            BuildableName = "shopance.app"
+            BlueprintName = "shopance"
+            ReferencedContainer = "container:shopance.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
